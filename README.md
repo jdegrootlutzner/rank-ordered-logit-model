@@ -4,7 +4,7 @@ An unpolished R implementation of Glickman and Hennessys' [A stochastic rank ord
 
 ## Context
 
-For [a side project I was working on](), I was trying to develop a way to measure the strength of NCAA cross-country runners in a sport where times are difficult to compare because of varying race courses and condition. I found Glickman and Hennessys' paper and implemented the algorithm they described on my own dataset - a collection of over 6,500 NCAA cross-country race results and over one million individual performances. The size of the data required me to optimize and parallelize the algorithm and run the code on a high compute Google Cloud server. 
+For [a side project I was working on](), I was trying to develop a way to measure the strength of NCAA cross-country runners (a sport where times are difficult to compare because of varying race courses and conditions) I found Glickman and Hennessys' paper and implemented the algorithm they described on my own dataset - a collection of over 6,500 NCAA cross-country race results and over one million individual performances. The size of the data required me to optimize and parallelize the algorithm and run the code on a high compute Google Cloud server. 
 
 At fist, the algorithm looked promising on a small test dataset of cross-country data. Unfortunately, when I scaled the algorithm to the complete dataset the results were nearly meaningless. I suspect this is the case because of the extreme variability of cross-country running races. Glickman and Hennessy created the algorithm for Olympic level downhill skiing where the results are much more consistent than cross-country running  (because of the variability in strength of athletes, type of courses, and length of races).
 
@@ -16,13 +16,13 @@ For reading, exploring, manipulating, and transforming the data I used the packa
 Here is an overview of the files above in the order that I developed them:
 
 Step One - understanding the algorithm and getting something working
-- _small-test.R_ : Prototype of the code on a small dataset in order to understand algorithm and test viability 
+- _small-test.R_ : Prototype of the algorithm on a small dataset in order to understand the paper and test its viability 
 
 Step Two - Attempting to scale the algorithm to larger dataset
 
 - _large-model.R_ : The controller of the process. Feed in data, preprocess, run algorithm, save results.
-- _preprocess-data.R_ : First pass at the process used change the data into the matrix format detailed in the paper
-- _newton-raphson.R_ : First pass at the algorithm detailed in section A of the paper to find posterior mode of theta
+- _preprocess-data.R_ : First pass at a program that transform the raw data into the matrix format detailed in the paper
+- _newton-raphson.R_ : First pass at the algorithm detailed in section A of the paper, which is used to find posterior mode of theta
 
 
 Step Three - Optimizing and parallelizing the algorithm
